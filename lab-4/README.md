@@ -30,12 +30,12 @@ https://denysmatsevych.github.io/web-development-2026/react/labs/lab-4/
 
 ```mermaid
 flowchart TD
-  App --> |menu| FilteredMenuTable
+  App --> FilteredMenuTable
+  App --> CafeInfo
   FilteredMenuTable --> |"filterText, inStockOnly"| SearchBar
   FilteredMenuTable --> |"menu, filterText, inStockOnly"| MenuTable
-  App --> CafeInfo
+  FilteredMenuTable -.-> |fetch| Server[("localStorage")]
   SearchBar -.-> |"onFilterTextChange, onInStockOnlyChange"| FilteredMenuTable
-  App -.-> |fetch| Server[("localStorage")]
   MenuTable --> |category| MenuCategory["MenuCategory × 3"]
   MenuCategory --> |item| MenuItemRow["MenuItemRow × 4, 3, 3"]
 ```
