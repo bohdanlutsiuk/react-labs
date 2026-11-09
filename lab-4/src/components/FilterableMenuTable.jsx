@@ -10,6 +10,11 @@ export default function FilterableMenuItem({ menu }) {
     () => localStorage.getItem('menu.inStockOnly') === 'true',
   )
 
+  function handleReset() {
+    setFilterText('')
+    setInStockOnly(false)
+  }
+
   useEffect(() => {
     localStorage.setItem('menu.filterText', String(filterText))
     localStorage.setItem('menu.inStockOnly', String(inStockOnly))
@@ -22,6 +27,7 @@ export default function FilterableMenuItem({ menu }) {
         inStockOnly={inStockOnly}
         onFilterTextChange={setFilterText}
         onInStockOnlyChange={setInStockOnly}
+        onReset={handleReset}
       />
       <MenuTable
         menu={menu}
