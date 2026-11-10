@@ -4,6 +4,7 @@ import { describeBooking } from '../describeBooking.js'
 
 export default function BookingForm() {
   const [booking, setBooking] = useState(null)
+  const [comment, setComment] = useState('')
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -32,12 +33,14 @@ export default function BookingForm() {
         Коментар
         <textarea
           name="comment"
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
           maxLength={200}
           aria-describedby="comment-counter"
         />
       </label>
       <p id="comment-counter" className="counter">
-        0 / 200
+        {comment.length} / 200
       </p>
       <div className="actions">
         <button type="submit">Забронювати</button>
