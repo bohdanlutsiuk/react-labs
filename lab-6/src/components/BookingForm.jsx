@@ -133,7 +133,7 @@ export default function BookingForm() {
       <label>
         Коментар
         <textarea
-          {...register('name')}
+          {...register('comment')}
           maxLength={200}
           aria-describedby="comment-counter"
         />
