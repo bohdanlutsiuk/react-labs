@@ -3,7 +3,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage.js'
 
 export default function FavoriteButton({ productId, name }) {
   const key = `favorite:${productId}`
-  const [isFavorite, setIsFavorite] = useLocalStorage(key)
+  const [isFavorite, setIsFavorite] = useLocalStorage(key, false)
 
   useEffect(() => {
     localStorage.setItem(key, String(isFavorite))
