@@ -1,40 +1,26 @@
-import { useState } from 'react'
 import BrewGuide from './BrewGuide.jsx'
 import ReviewList from './ReviewList.jsx'
 import RelatedProducts from './RelatedProducts.jsx'
 import { brewMethods, related, reviews } from '../data.js'
+import Tabs from './Tabs.jsx'
 
 export default function ProductTabs() {
-  const [tab, setTab] = useState('brew')
-
   return (
-    <div className="tabs">
-      <div className="tab-list">
-        <button
-          type="button"
-          className={tab === 'brew' ? 'active' : ''}
-          onClick={() => setTab('brew')}
-        >
-          Заварювання
-        </button>
-        <button
-          type="button"
-          className={tab === 'reviews' ? 'active' : ''}
-          onClick={() => setTab('reviews')}
-        >
-          Відгуки ({reviews.length})
-        </button>
-        <button
-          type="button"
-          className={tab === 'related' ? 'active' : ''}
-          onClick={() => setTab('related')}
-        >
-          Схожі товари
-        </button>
-      </div>
-      {tab === 'brew' && <BrewGuide methods={brewMethods} />}
-      {tab === 'reviews' && <ReviewList reviews={reviews} />}
-      {tab === 'related' && <RelatedProducts products={related} />}
-    </div>
+    <Tabs defaultValue="brew">
+      <Tabs.List aria-label="Про каву">
+        <Tabs.Tab value="brew">Заварювання</Tabs.Tab>
+        <Tabs.Tab value="reviews">Відгуки ({reviews.length})</Tabs.Tab>
+        <Tabs.Tab value="related">Схожі товари</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="brew">
+        <BrewGuide methods={brewMethods} />
+      </Tabs.Panel>
+      <Tabs.Panel value="reviews">
+        <ReviewList reviews={reviews} />
+      </Tabs.Panel>
+      <Tabs.Panel value="related">
+        <RelatedProducts products={related} />
+      </Tabs.Panel>
+    </Tabs>
   )
 }

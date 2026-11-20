@@ -1,3 +1,5 @@
+import { createContext, useContext, useState } from 'react'
+
 /**
  * Вкладки — складений компонент (compound component): `Tabs` і його частини
  * `Tabs.List`, `Tabs.Tab` і `Tabs.Panel`. Вміст кожної частини приходить між
@@ -16,6 +18,51 @@
  *
  * Вимоги — у тестах tests/Tabs.children.test.jsx і tests/Tabs.a11y.test.jsx.
  */
-export default function Tabs() {
-  throw new Error('Not implemented: Tabs')
+const TabsContext = createContext()
+
+function useTabsContext() {
+  const context = useContext(TabsContext)
+  if (!context) {
+    throw new Error('Tabs related components must be used in <Tabs> component')
+  }
+  return context
 }
+
+export default function Tabs({ defaultValue, children }) {
+  const [activeTab, setActiveTab] = useState(defaultValue)
+
+  return (
+    <TabsContext.Provider value={{ activeTab, setActiveTab }}>
+      <div className="tabs">{children}</div>
+    </TabsContext.Provider>
+  )
+}
+
+function List({ children }) {
+  return <div className="tab-list">{children}</div>
+}
+
+function Tab({ value, children }) {
+  const { activeTab, setActiveTab } = useTabsContext()
+  const isActive = activeTab === value
+  return (
+    <button
+      type="button"
+      className={isActive ? 'active' : ''}
+      onClick={() => setActiveTab(value)}
+    >
+      {children}
+    </button>
+  )
+}
+
+function Panel({ value, children }) {
+  const { activeTab } = useTabsContext()
+  const isActive = activeTab === value
+
+  return <div hidden={!isActive}>{children}</div>
+}
+
+Tabs.List = List
+Tabs.Tab = Tab
+Tabs.Panel = Panel
