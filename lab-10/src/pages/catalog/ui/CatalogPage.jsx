@@ -1,4 +1,5 @@
-import { beans, BeanCard } from '../../../entities/bean/index.js'
+import { beans } from '../../../entities/bean/index.js'
+import { BeanCard } from '../../bean/index.js'
 
 export default function CatalogPage() {
   return (
