@@ -11,13 +11,13 @@
 `AddToCartButton`, `CartLine`, сторінка кошика й шапка з лічильником.
 «Тек» — скільки їх, «Теки» — їхні шляхи через кому.
 
-| Структура                  | Тек | Теки                                                                                                                                                                                       |
-| -------------------------- |-----|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| За типом файлів (§4.3)     | 4   | "components/AddToCartButton.jsx", "components/AppHeader.jsx", "components/CartLine.jsx", "hooks/useCart.js", "store/cartStore.js", "pages/CartPage.jsx"                                    |
-| За маршрутами (§4.4)       | 5   | "shared/store/cartStore.js", "shared/hooks/useCart.js", "shared/components/AddToCartButton.jsx", "routes/cart/CartLine.jsx", "routes/cart/CartPage.jsx", "shared/components/AppHeader.jsx" |
-| За функціональністю (§4.5) | 5   | "stores/cartStore.js", "hooks/useCart.js", "components/AddToCartButton.jsx", "features/cart/components/CartLine.jsx", "app/routes/CartPage.jsx", "components/AppHeader.jsx"                |
-| FSD (§4.6)                 |     |                                                                                                                                                                                            |
-| Пакет (§4.9)               |     |                                                                                                                                                                                            |
+| Структура                  | Тек | Теки                                                                                                                                                                                         |
+| -------------------------- |-----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| За типом файлів (§4.3)     | 4   | "components/AddToCartButton.jsx", "components/AppHeader.jsx", "components/CartLine.jsx", "hooks/useCart.js", "store/cartStore.js", "pages/CartPage.jsx"                                      |
+| За маршрутами (§4.4)       | 5   | "shared/store/cartStore.js", "shared/hooks/useCart.js", "shared/components/AddToCartButton.jsx", "routes/cart/CartLine.jsx", "routes/cart/CartPage.jsx", "shared/components/AppHeader.jsx"   |
+| За функціональністю (§4.5) | 5   | "stores/cartStore.js", "hooks/useCart.js", "components/AddToCartButton.jsx", "features/cart/components/CartLine.jsx", "app/routes/CartPage.jsx", "components/AppHeader.jsx"                  |
+| FSD (§4.6)                 | 4   | "shared/lib/cartStore.js", "shared/lib/useCart.js", "features/cart/ui/AddToCartButton.jsx", "features/cart/ui/CartLine.jsx", "pages/cart/ui/CartPage.jsx", "widgets/header/ui/AppHeader.jsx" |
+| Пакет (§4.9)               |     |                                                                                                                                                                                              |
 
 ## Вибір структури
 
