@@ -1,7 +1,7 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, test } from 'vitest'
-import App from '#app'
+import App from 'lab-10/src/app/App.jsx'
 
 function renderAt(hash) {
   window.location.hash = hash

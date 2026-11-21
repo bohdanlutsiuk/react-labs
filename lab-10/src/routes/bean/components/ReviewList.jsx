@@ -1,4 +1,4 @@
-import ShowMore from './ShowMore.jsx'
+import ShowMore from '../../../shared/components/ShowMore.jsx'
 
 export default function ReviewList({ reviews }) {
   return (
