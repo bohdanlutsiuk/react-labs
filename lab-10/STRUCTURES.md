@@ -15,7 +15,7 @@
 | -------------------------- |-----|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | За типом файлів (§4.3)     | 4   | "components/AddToCartButton.jsx", "components/AppHeader.jsx", "components/CartLine.jsx", "hooks/useCart.js", "store/cartStore.js", "pages/CartPage.jsx"                                    |
 | За маршрутами (§4.4)       | 5   | "shared/store/cartStore.js", "shared/hooks/useCart.js", "shared/components/AddToCartButton.jsx", "routes/cart/CartLine.jsx", "routes/cart/CartPage.jsx", "shared/components/AppHeader.jsx" |
-| За функціональністю (§4.5) |     |                                                                                                                                                                                            |
+| За функціональністю (§4.5) | 5   | "stores/cartStore.js", "hooks/useCart.js", "components/AddToCartButton.jsx", "features/cart/components/CartLine.jsx", "app/routes/CartPage.jsx", "components/AppHeader.jsx"                |
 | FSD (§4.6)                 |     |                                                                                                                                                                                            |
 | Пакет (§4.9)               |     |                                                                                                                                                                                            |
 

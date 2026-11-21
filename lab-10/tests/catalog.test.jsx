@@ -1,7 +1,7 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, test } from 'vitest'
-import App from 'lab-10/src/app/App.jsx'
+import App from '../src/app/App.jsx'
 
 const beans = [
   ['Ефіопія Іргачеф', '420 грн'],
