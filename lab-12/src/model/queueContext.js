@@ -1,3 +1,5 @@
+import { createContext } from 'react'
+
 /**
  * Контексти черги замовлень і хуки, які їх читають.
  *
@@ -15,6 +17,9 @@
  * Поки що хуки кидають помилку. Вимоги — у тестах
  * tests/queueContext.test.jsx і tests/QueueProvider.test.jsx.
  */
+
+export const QueueContext = createContext(null)
+export const QueueDispatchContext = createContext(null)
 
 /** { queue, canUndo, canRedo } з найближчого QueueProvider. */
 export function useQueue() {

@@ -1,15 +1,17 @@
-import { useId } from 'react'
+import { use, useId } from 'react'
 import { flushSync } from 'react-dom'
 import { describeItem } from '../data/menu.js'
+import { QueueDispatchContext } from '../model/queueContext.js'
 
 // Кнопка наступного кроку в кожній колонці, крім «Видані».
 const nextStep = { new: 'Почати', brewing: 'Готово', ready: 'Видати' }
 
-export default function OrderCard({ order, dispatch, onOpen }) {
+export default function OrderCard({ order, onOpen }) {
   const titleId = useId()
   const isBrewing = order.status === 'brewing'
   const allDone = order.items.every((item) => item.done)
   const canCancel = order.status === 'new' || isBrewing
+  const dispatch = use(QueueDispatchContext)
 
   // Кнопка кроку й «Скасувати замовлення» прибирають картку з колонки разом
   // із кнопкою, на якій був фокус, і він падає на початок сторінки. Тому
