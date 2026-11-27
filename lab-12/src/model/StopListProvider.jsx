@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import { StopListContext } from './stopListContext.js'
+
 /**
  * §4.7. Провайдер стоп-листа: компонент, який зберігає стоп-лист у стані
  * й передає { stopped, toggle } через StopListContext компонентам,
@@ -5,6 +8,18 @@
  *
  * Поки що кидає помилку. Вимоги — у тестах tests/StopList.test.jsx.
  */
-export default function StopListProvider(/* { children } */) {
-  throw new Error('Not implemented: StopListProvider')
+export default function StopListProvider({ children }) {
+  const [stopped, setStopped] = useState([])
+
+  function toggle(name) {
+    setStopped((current) =>
+      current.includes(name)
+        ? current.filter((entry) => entry !== name)
+        : [...current, name],
+    )
+  }
+
+  return (
+    <StopListContext value={{ stopped, toggle }}>{children}</StopListContext>
+  )
 }

@@ -1,7 +1,8 @@
 import { useId } from 'react'
 import { flushSync } from 'react-dom'
-import { describeItem } from '../data/menu.js'
+import { describeItem, hasStopped } from '../data/menu.js'
 import { useQueueDispatch } from '../model/queueContext.js'
+import { useStopList } from '../model/stopListContext.js'
 
 // Кнопка наступного кроку в кожній колонці, крім «Видані».
 const nextStep = { new: 'Почати', brewing: 'Готово', ready: 'Видати' }
@@ -12,6 +13,10 @@ export default function OrderCard({ order, onOpen }) {
   const allDone = order.items.every((item) => item.done)
   const canCancel = order.status === 'new' || isBrewing
   const dispatch = useQueueDispatch()
+  const { stopped } = useStopList()
+  const showNoteStoped =
+    (order.status === 'new' || order.status === 'brewing') &&
+    order.items.some((item) => hasStopped(item, stopped))
 
   // Кнопка кроку й «Скасувати замовлення» прибирають картку з колонки разом
   // із кнопкою, на якій був фокус, і він падає на початок сторінки. Тому
@@ -39,6 +44,7 @@ export default function OrderCard({ order, onOpen }) {
       <h3 id={titleId}>
         № {order.number} · {order.customer.name}
       </h3>
+      {showNoteStoped && <p className="stop-note">Є позиції зі стоп-листа</p>}
       <ul className="order-items">
         {order.items.map((item) => (
           <li key={item.id}>
