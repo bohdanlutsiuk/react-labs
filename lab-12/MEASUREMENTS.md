@@ -14,14 +14,14 @@
 
 | Компонент        | Після §4.4 | Після §4.5 |
 | ---------------- | ---------- | ---------- |
-| `App`            | Так        |            |
-| `QueueProvider`  | -          |            |
-| `OrderComposer`  | Так        |            |
-| `HistoryButtons` | Так        |            |
-| `OrderDetails`   | Так        |            |
-| `OrderBoard`     | Так        |            |
-| `OrderColumn`    | Так        |            |
-| `OrderCard`      | Так        |            |
+| `App`            | Так        | Ні         |
+| `QueueProvider`  | -          | Так        |
+| `OrderComposer`  | Так        | Ні         |
+| `HistoryButtons` | Так        | Так        |
+| `OrderDetails`   | Так        | Так        |
+| `OrderBoard`     | Так        | Так        |
+| `OrderColumn`    | Так        | Так        |
+| `OrderCard`      | Так        | Так        |
 
 ## Які компоненти рендеряться, коли бариста відкриває «Деталі»
 
@@ -31,12 +31,12 @@
 
 | Компонент        | Після §4.5 | Після §4.6 |
 | ---------------- | ---------- | ---------- |
-| `App`            |            |            |
-| `QueueProvider`  |            |            |
-| `QueuePanel`     |            |            |
-| `OrderComposer`  |            |            |
-| `HistoryButtons` |            |            |
-| `OrderDetails`   |            |            |
-| `OrderBoard`     |            |            |
-| `OrderColumn`    |            |            |
-| `OrderCard`      |            |            |
+| `App`            | Так        |            |
+| `QueueProvider`  | Так        |            |
+| `QueuePanel`     | -          |            |
+| `OrderComposer`  | Так        |            |
+| `HistoryButtons` | Так        |            |
+| `OrderDetails`   | Так        |            |
+| `OrderBoard`     | Так        |            |
+| `OrderColumn`    | Так        |            |
+| `OrderCard`      | Так        |            |

@@ -1,11 +1,14 @@
-import { useRef } from 'react'
+import { use, useRef } from 'react'
 import { flushSync } from 'react-dom'
+import { QueueDispatchContext, useQueue } from '../model/queueContext.js'
 
 /**
  * «Скасувати дію» й «Повторити дію» для черги. Кожна кнопка вимкнена, коли
  * нема чого скасовувати чи повторювати.
  */
-export default function HistoryButtons({ canUndo, canRedo, onUndo, onRedo }) {
+export default function HistoryButtons() {
+  const { canUndo, canRedo } = useQueue()
+  const dispatch = use(QueueDispatchContext)
   const undoRef = useRef(null)
   const redoRef = useRef(null)
 
@@ -22,7 +25,9 @@ export default function HistoryButtons({ canUndo, canRedo, onUndo, onRedo }) {
       <button
         ref={undoRef}
         type="button"
-        onClick={() => press(onUndo, undoRef, redoRef)}
+        onClick={() =>
+          press(() => dispatch({ type: 'undo' }), undoRef, redoRef)
+        }
         disabled={!canUndo}
       >
         Скасувати дію
@@ -30,7 +35,9 @@ export default function HistoryButtons({ canUndo, canRedo, onUndo, onRedo }) {
       <button
         ref={redoRef}
         type="button"
-        onClick={() => press(onRedo, redoRef, undoRef)}
+        onClick={() =>
+          press(() => dispatch({ type: 'redo' }), undoRef, redoRef)
+        }
         disabled={!canRedo}
       >
         Повторити дію
