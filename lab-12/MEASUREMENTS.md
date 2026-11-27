@@ -30,13 +30,13 @@
 Поставте «так», «ні» або «—», як у попередній таблиці.
 
 | Компонент        | Після §4.5 | Після §4.6 |
-| ---------------- | ---------- | ---------- |
-| `App`            | Так        |            |
-| `QueueProvider`  | Так        |            |
-| `QueuePanel`     | -          |            |
-| `OrderComposer`  | Так        |            |
-| `HistoryButtons` | Так        |            |
-| `OrderDetails`   | Так        |            |
-| `OrderBoard`     | Так        |            |
-| `OrderColumn`    | Так        |            |
-| `OrderCard`      | Так        |            |
+| ---------------- | ---------- |------------|
+| `App`            | Так        | Ні         |
+| `QueueProvider`  | Так        | Ні         |
+| `QueuePanel`     | -          | Так        |
+| `OrderComposer`  | Так        | Ні         |
+| `HistoryButtons` | Так        | Так        |
+| `OrderDetails`   | Так        | Так        |
+| `OrderBoard`     | Так        | Так        |
+| `OrderColumn`    | Так        | Так        |
+| `OrderCard`      | Так        | Так        |

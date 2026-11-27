@@ -1,9 +1,6 @@
-import { useState } from 'react'
-import HistoryButtons from './components/HistoryButtons.jsx'
-import OrderBoard from './components/OrderBoard.jsx'
 import OrderComposer from './components/OrderComposer.jsx'
-import OrderDetails from './components/OrderDetails.jsx'
 import QueueProvider from './model/QueueProvider.jsx'
+import QueuePanel from './components/QueuePanel.jsx'
 
 // Створюється один раз, під час імпорту: у кожному рендері App отримує той
 // самий ред'юсер.
@@ -11,7 +8,6 @@ import QueueProvider from './model/QueueProvider.jsx'
 export default function App() {
   // id замовлення, відкритого в «Деталях», або null. У історію не входить:
   // «Скасувати дію» не закриває й не відкриває «Деталі».
-  const [openedId, setOpenedId] = useState(null)
 
   return (
     <QueueProvider>
@@ -25,14 +21,7 @@ export default function App() {
         </header>
         <div className="workspace">
           <OrderComposer />
-          <main className="queue">
-            <HistoryButtons />
-            <OrderDetails
-              orderId={openedId}
-              onClose={() => setOpenedId(null)}
-            />
-            <OrderBoard onOpen={(order) => setOpenedId(order.id)} />
-          </main>
+          <QueuePanel />
         </div>
       </div>
     </QueueProvider>
