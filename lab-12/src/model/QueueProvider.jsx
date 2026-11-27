@@ -1,6 +1,7 @@
+import { useState } from 'react'
+import { createStore } from 'zustand/vanilla'
 import { createInitialState, queueReducer } from './queueReducer.js'
 import { createHistory, withUndo } from './withUndo.js'
-import { useReducer } from 'react'
 import { loadOrders } from '../data/orders.js'
 import { QueueContext, QueueDispatchContext } from './queueContext.js'
 
@@ -14,20 +15,20 @@ import { QueueContext, QueueDispatchContext } from './queueContext.js'
 const undoableQueue = withUndo(queueReducer)
 
 export default function QueueProvider({ children }) {
-  const [history, dispatch] = useReducer(undoableQueue, null, () =>
-    createHistory(createInitialState(loadOrders())),
+  const [store] = useState(() =>
+    createStore((set) => ({
+      history: createHistory(createInitialState(loadOrders())),
+      dispatch(action) {
+        set((state) => ({ history: undoableQueue(state.history, action) }))
+      },
+    })),
   )
-  const queue = history.present
 
   return (
-    <QueueContext
-      value={{
-        queue,
-        canUndo: history.past.length > 0,
-        canRedo: history.future.length > 0,
-      }}
-    >
-      <QueueDispatchContext value={dispatch}>{children}</QueueDispatchContext>
+    <QueueContext value={store}>
+      <QueueDispatchContext value={store.getState().dispatch}>
+        {children}
+      </QueueDispatchContext>
     </QueueContext>
   )
 }

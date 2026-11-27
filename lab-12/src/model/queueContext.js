@@ -1,4 +1,6 @@
 import { createContext, use } from 'react'
+import { useStore } from 'zustand'
+import { useShallow } from 'zustand/react/shallow'
 
 /**
  * Контексти черги замовлень і хуки, які їх читають.
@@ -23,18 +25,25 @@ export const QueueDispatchContext = createContext(null)
 
 /** { queue, canUndo, canRedo } з найближчого QueueProvider. */
 export function useQueue() {
-  const queue = use(QueueContext)
-  if (queue === null) {
+  const store = use(QueueContext)
+  if (store === null) {
     throw new Error('useQueue must be used within a QueueProvider')
   }
-  return queue
+  return useStore(
+    store,
+    useShallow((state) => ({
+      queue: state.history.present,
+      canUndo: state.history.past.length > 0,
+      canRedo: state.history.future.length > 0,
+    })),
+  )
 }
 
 /** dispatch ред'юсера черги з найближчого QueueProvider. */
 export function useQueueDispatch() {
-  const dispatch = use(QueueDispatchContext)
-  if (dispatch === null) {
+  const store = use(QueueContext)
+  if (store === null) {
     throw new Error('useQueueDispatch must be used within a QueueProvider')
   }
-  return dispatch
+  return useStore(store, (state) => state.dispatch)
 }
